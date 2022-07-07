@@ -1,0 +1,25 @@
+#Language python
+language: python
+python: 3.6
+dist: bionic
+
+branches:
+  except:
+    - /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$/
+
+services:
+  - docker
+
+addons:
+  apt:
+    packages:
+      - gettext
+      
+jobs:
+  include:
+    - stage: Build
+      os: linux-ppc64le
+      dist: bionic
+      script:
+        - pip3 install openshift kubernetes flask requests requests-cache pyjwt
+        - python3 slow-pips.py -f
