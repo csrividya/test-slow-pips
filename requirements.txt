@@ -4,7 +4,6 @@ flask
 requests
 requests-cache
 pyjwt
-cryptography
 gunicorn==20.1.0
 greenlet==1.1.1
 eventlet==0.30.2 #https://github.com/benoitc/gunicorn/issues/2590
